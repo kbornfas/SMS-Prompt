@@ -12,8 +12,20 @@ NC='\033[0m' # No Color
 
 echo "Checking for uncommitted changes..."
 
-# Check if there are any uncommitted changes
+# Check if there are any uncommitted changes (modified/staged files or untracked files)
+HAS_CHANGES=0
+
+# Check for modified or staged files
 if ! git diff --quiet || ! git diff --cached --quiet; then
+    HAS_CHANGES=1
+fi
+
+# Check for untracked files (excluding those in .gitignore)
+if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+    HAS_CHANGES=1
+fi
+
+if [ $HAS_CHANGES -eq 1 ]; then
     echo -e "${YELLOW}Warning: Uncommitted changes detected${NC}"
     
     # Show the status

@@ -4,5 +4,8 @@
 
 # This hook can be bypassed with --no-verify flag or by setting ALLOW_UNCOMMITTED=1
 
-# Run the uncommitted changes check
-./check-uncommitted.sh
+# Get the git repository root directory
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+# Run the uncommitted changes check from the repo root
+"$REPO_ROOT/check-uncommitted.sh"
