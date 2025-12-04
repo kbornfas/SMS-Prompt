@@ -2,6 +2,22 @@
 
 A simple command-line interface (CLI) tool for sending SMS messages using Twilio.
 
+## Quick Start
+
+```bash
+# 1. Clone and install
+git clone https://github.com/kbornfas/SMS-Prompt.git
+cd SMS-Prompt
+pip install -r requirements.txt
+
+# 2. Configure Twilio
+cp .env.example .env
+# Edit .env with your Twilio credentials from https://console.twilio.com/
+
+# 3. Run
+python cli/main.py
+```
+
 ## Features
 
 - 📱 Send SMS messages directly from your terminal
@@ -68,17 +84,40 @@ Follow the prompts to:
 
 ## Troubleshooting
 
-### "Error: Twilio credentials not found!"
+### Common Issues and Solutions
+
+#### "Error: Twilio credentials not found!"
 - Make sure you've created a `.env` file and added your Twilio credentials
 - Check that the variable names match exactly: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_PHONE_NUMBER`
 
-### "Unable to create record: Permission to send an SMS has not been enabled"
-- For trial accounts, you need to verify phone numbers before sending to them
+#### "Unable to create record: Permission to send an SMS has not been enabled" (Error 21610)
+- **For trial accounts**: You need to verify phone numbers before sending to them
 - Verify phone numbers at: https://console.twilio.com/us1/develop/phone-numbers/manage/verified
+- **Solution**: Add the recipient's phone number to your verified list, or upgrade to a paid account
 
-### "The 'From' number ... is not a valid phone number"
+#### "The 'From' number ... is not a valid phone number" (Error 21608)
 - Make sure your `TWILIO_PHONE_NUMBER` includes the country code (e.g., +1234567890)
-- Verify the number is active in your Twilio account
+- Verify the number is active and matches exactly what's shown in your Twilio account
+- Check that you've selected a phone number in your Twilio console
+
+#### "Authentication failed" (Error 20003)
+- Double-check your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in the .env file
+- Make sure there are no extra spaces or quotes around the values
+- Verify credentials at: https://console.twilio.com/
+
+#### Message not sending / Keeps retrying
+- The tool will automatically retry up to 3 times with increasing delays
+- Check the specific error code and message for guidance
+- Visit Twilio's error documentation: https://www.twilio.com/docs/api/errors
+- Ensure you have sufficient balance in your Twilio account
+
+### Features
+
+- ✅ **Automatic retry logic**: Failed sends are retried up to 3 times with exponential backoff
+- ✅ **Detailed error messages**: Specific error codes with helpful troubleshooting tips
+- ✅ **Input validation**: Warns about missing country codes and long messages
+- ✅ **Progress feedback**: Shows attempt number, recipient, and message preview
+- ✅ **Cost tracking**: Displays message price after successful delivery
 
 ## License
 

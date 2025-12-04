@@ -47,7 +47,10 @@ def send_sms(to_number, from_number, message, max_retries=3):
             print(f"\n✅ Message sent successfully!")
             print(f"  📧 Message SID: {message_obj.sid}")
             print(f"  📊 Status: {message_obj.status}")
-            print(f"  💰 Price: {message_obj.price} {message_obj.price_unit if message_obj.price else 'N/A'}")
+            if message_obj.price:
+                print(f"  💰 Price: {message_obj.price} {message_obj.price_unit}")
+            else:
+                print(f"  💰 Price: N/A (pricing info not available yet)")
             return True
             
         except TwilioRestException as e:
@@ -134,7 +137,7 @@ def main():
         line = input()
         if line == "":
             empty_line_count += 1
-            if empty_line_count >= 2 or (len(lines) > 0 and empty_line_count >= 1):
+            if empty_line_count >= 2:
                 break
         else:
             empty_line_count = 0
