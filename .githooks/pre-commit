@@ -1,0 +1,8 @@
+#!/bin/bash
+# Pre-commit hook to check for uncommitted changes
+# To install: git config core.hooksPath .githooks
+
+# This hook can be bypassed with --no-verify flag or by setting ALLOW_UNCOMMITTED=1
+
+# Run the uncommitted changes check
+./check-uncommitted.sh
