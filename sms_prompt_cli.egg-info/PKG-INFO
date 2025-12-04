@@ -1,3 +1,50 @@
+Metadata-Version: 2.4
+Name: sms-prompt-cli
+Version: 1.0.0
+Summary: A powerful CLI tool to send customized SMS prompts with variable interpolation, bulk sending, and analytics
+Home-page: https://github.com/kbornfas/SMS-Prompt
+Author: Your Name
+Author-email: your.email@example.com
+Project-URL: Bug Reports, https://github.com/kbornfas/SMS-Prompt/issues
+Project-URL: Source, https://github.com/kbornfas/SMS-Prompt
+Keywords: sms,cli,twilio,messaging,bulk-sms,templates
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Communications :: Telephony
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: click>=8.1.7
+Requires-Dist: rich>=13.7.0
+Requires-Dist: twilio>=8.11.0
+Requires-Dist: jinja2>=3.1.2
+Requires-Dist: pyyaml>=6.0.1
+Requires-Dist: sqlalchemy>=2.0.23
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: phonenumbers>=8.13.26
+Requires-Dist: pandas>=2.1.4
+Requires-Dist: tabulate>=0.9.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: project-url
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 # SMS Prompt CLI 📱
 
 A powerful command-line tool to send customized SMS messages with variable interpolation, bulk sending, and analytics.
