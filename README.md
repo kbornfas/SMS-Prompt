@@ -24,3 +24,11 @@ You can also run the check manually:
 ```bash
 ./check-uncommitted.sh
 ```
+
+### Testing
+
+Run the test suite to verify the uncommitted changes detection works correctly:
+
+```bash
+./test-check-uncommitted.sh
+```
